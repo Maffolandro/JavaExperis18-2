@@ -13,9 +13,10 @@
     <head>
         <%@include file="Templates/headHTML.html" %>
         <% var1 = "class='active'"; %>
+        <% var2 = "class='hidden'"; %>
         <%@include file="Templates/menu.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pagina utente</title>
+        <title>Schermata utente</title>
     </head>
     <body>
         <div class="container">
