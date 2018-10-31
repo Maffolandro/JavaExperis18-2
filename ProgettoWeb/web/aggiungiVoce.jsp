@@ -15,9 +15,10 @@
                 <%
                 beans.clsOrdine ordine = (beans.clsOrdine)session.getAttribute("bean");
                 int id = Integer.valueOf(request.getParameter("ID"));
-                String nome = request.getParameter("Nome");
-                double quantità = Double.parseDouble(request.getParameter("Quantita"));
-                ordine.addVoce(id, nome, quantità);
+                String nome = request.getParameter("nome");
+                double quantità = Double.parseDouble(request.getParameter("quantita"));
+                double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+                ordine.addVoce(id, nome, quantità, quantità*prezzo);
                 session.setAttribute("bean", ordine);
                 response.sendRedirect("prodotti.jsp");
                 %>

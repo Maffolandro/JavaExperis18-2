@@ -29,7 +29,6 @@
     </head>
     <body>
         <div class="container">
-            <p><%=ordine.getVoci().size()%></p>
             <h1>Elenco dei prodotti presenti</h1>
             <table class='table'>
                 <thead>
@@ -56,17 +55,27 @@
                             String descrizione = rs.getString("DESCRIZIONE");
                             Double prezzo = rs.getDouble("PREZZO");
 
+                            
+                            
                             out.println("<tr>");
+                            out.println("<form action='aggiungiVoce.jsp'>");
                             // Scrive l'ID nella prima riga
                             // out.println("<td>" + ID + "</td>");
                             // Genero un pulsante per cancellare // aggiungiProdotto.jsp?ID=" + ID + "
-                            String addButton = "<a href='aggiungiVoce.jsp?ID=" + ID + "&Nome=" + nome + "&Quantita=" + 1 + "' class='btn btn-info' role='button'> Aggiungi </a>";
+                            //String addButton = "<a href='aggiungiVoce.jsp?ID=" + ID + "&Nome=" + nome + "&Quantita=" + 1 + "' class='btn btn-info' role='button'> Aggiungi </a>";
 
                             out.println("<td>" + nome + "</td>");
                             out.println("<td>" + descrizione + "</td>");
                             out.println("<td>" + prezzo + "</td>"); %>
-                            <td></td>
-                            <%out.println("<td>" + addButton + "</td>");
+                            <td>
+                                <input name="ID" type="hidden" value="<%=ID%>"></input>
+                                <input name="nome" type="hidden" value="<%=nome%>"></input>
+                                <input name="prezzo" type="hidden" value="<%=prezzo%>"></input>
+                                <input name="quantita" type="number" value="1"step="0.25" min="0" required></input>
+                            </td>
+                            <%
+                            out.println("<td><input class='btn btn-info' type='submit' value='Aggiungi'></input></td>");
+                            out.println("</form>");
                             out.println("</tr>");
                         }
 

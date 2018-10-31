@@ -20,11 +20,13 @@ public class clsOrdine {
         int idProdotto;
         String nome;
         double quantità;
+        double prezzo;
         
-        public VoceOrdine(int idProdotto, String nome, double quantità) {
+        public VoceOrdine(int idProdotto, String nome, double quantità, double prezzo) {
             this.idProdotto = idProdotto;
             this.nome = nome;
             this.quantità = quantità;
+            this.prezzo = prezzo;
         }
 
         public int getIdProdotto() {
@@ -42,6 +44,10 @@ public class clsOrdine {
         public void setQuantità(double quantità) {
             this.quantità = quantità;
         }
+
+        public double getPrezzo() {
+            return prezzo;
+        }
         
         
     }
@@ -51,8 +57,8 @@ public class clsOrdine {
         voci = new ArrayList();
     }
     
-    public void addVoce(int idProdotto, String nome, double quantità) {
-        voci.add(new VoceOrdine(idProdotto, nome, quantità)); 
+    public void addVoce(int idProdotto, String nome, double quantità, double prezzo) {
+        voci.add(new VoceOrdine(idProdotto, nome, quantità, prezzo)); 
     }
     
     public List getVoci() {

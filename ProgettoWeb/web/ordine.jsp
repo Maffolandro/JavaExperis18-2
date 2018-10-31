@@ -43,7 +43,7 @@
                         int ID = v.getIdProdotto();
                         String nome = v.getNome();
                         double quantità = v.getQuantità();
-                        double prezzo = 0;
+                        double prezzo = v.getPrezzo();
                         String modButton = "<a href='' class='btn btn-info' role='button'> Modifica </a>";
                         String delButton = "<a href='' class='btn btn-info' role='button'> Rimuovi </a>";
                         // aggiungiVoce.jsp?ID=" + ID + "
