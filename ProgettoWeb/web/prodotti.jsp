@@ -71,7 +71,7 @@
                                 <input name="ID" type="hidden" value="<%=ID%>"></input>
                                 <input name="nome" type="hidden" value="<%=nome%>"></input>
                                 <input name="prezzo" type="hidden" value="<%=prezzo%>"></input>
-                                <input name="quantita" type="number" value="1"step="0.25" min="0" required></input>
+                                <input name="quantita" type="number" value="1" step="0.25" min="0" required></input>
                             </td>
                             <%
                             out.println("<td><input class='btn btn-info' type='submit' value='Aggiungi'></input></td>");

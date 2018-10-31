@@ -56,7 +56,7 @@
                         
                     }
                     // Da qua:  SISTEMARE!!!
-                String confButton = "<a href='confermaOrdine.jsp' class='btn btn-info' role='button'> Conferma </a>";
+                String confButton = "<a href='salvaOrdine.jsp' class='btn btn-info' role='button'> Conferma </a>";
                 out.println("<td>" + confButton + "</td>");
                     
                 %>
