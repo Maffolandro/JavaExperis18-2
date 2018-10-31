@@ -11,23 +11,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="Templates/headHTML.html" %>
-        <% var1 = "class='active'"; %>
-        <% var2 = "class='hidden'"; %>
-        <%@include file="Templates/menu.jsp" %>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Schermata utente</title>
-    </head>
-    <body>
-        <div class="container">
-            <%beans.clsOrdine ordine = null;
+        <%beans.clsOrdine ordine = null;
             if (session.getAttribute("bean") == null) {
                 ordine = new beans.clsOrdine();
                 session.setAttribute("bean", ordine);
-                }
-                else {
-                    ordine = (beans.clsOrdine) session.getAttribute("bean");
-                }%>
+            } else {
+                ordine = (beans.clsOrdine) session.getAttribute("bean");
+            }%>
+        <%@include file="Templates/headHTML.html" %>
+        <% var1 = "class='active'"; %>
+        <% if (ordine.getVoci().size() == 0) {
+                var2 = "class='hidden'";
+            }%>
+        <%@include file="Templates/menu.jsp" %>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Visualizza prodotti</title>
+    </head>
+    <body>
+        <div class="container">
             <p><%=ordine.getVoci().size()%></p>
             <h1>Elenco dei prodotti presenti</h1>
             <table class='table'>
@@ -35,6 +36,7 @@
                 <th>Prodotto</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
+                <th>Quantità</th>
                 </thead>
                 <%
                     Connection conn = null;
@@ -62,8 +64,9 @@
 
                             out.println("<td>" + nome + "</td>");
                             out.println("<td>" + descrizione + "</td>");
-                            out.println("<td>" + prezzo + "</td>");
-                            out.println("<td>" + addButton + "</td>");
+                            out.println("<td>" + prezzo + "</td>"); %>
+                            <td></td>
+                            <%out.println("<td>" + addButton + "</td>");
                             out.println("</tr>");
                         }
 
