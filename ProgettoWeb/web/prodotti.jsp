@@ -20,6 +20,15 @@
     </head>
     <body>
         <div class="container">
+            <%beans.clsOrdine ordine = null;
+            if (session.getAttribute("bean") == null) {
+                ordine = new beans.clsOrdine();
+                session.setAttribute("bean", ordine);
+                }
+                else {
+                    ordine = (beans.clsOrdine) session.getAttribute("bean");
+                }%>
+            <p><%=ordine.getVoci().size()%></p>
             <h1>Elenco dei prodotti presenti</h1>
             <table class='table'>
                 <thead>
@@ -49,8 +58,8 @@
                             // Scrive l'ID nella prima riga
                             // out.println("<td>" + ID + "</td>");
                             // Genero un pulsante per cancellare // aggiungiProdotto.jsp?ID=" + ID + "
-                            String addButton = "<a href='' class='btn btn-info' role='button' onclick='return alert(\"Prodotto aggiunto!\");'> Aggiungi </a>";
-                            
+                            String addButton = "<a href='aggiungiVoce.jsp?ID=" + ID + "&Nome=" + nome + "&Quantita=" + 1 + "' class='btn btn-info' role='button'> Aggiungi </a>";
+
                             out.println("<td>" + nome + "</td>");
                             out.println("<td>" + descrizione + "</td>");
                             out.println("<td>" + prezzo + "</td>");

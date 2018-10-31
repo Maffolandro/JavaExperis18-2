@@ -13,12 +13,18 @@ import java.util.ArrayList;
  */
 public class clsOrdine {
     
-    ArrayList<VoceOrdine> voci;
+    public ArrayList<VoceOrdine> voci;
     
     class VoceOrdine {
         int idProdotto;
         String nome;
-        int quantità;
+        double quantità;
+        
+        public VoceOrdine(int idProdotto, String nome, double quantità) {
+            this.idProdotto = idProdotto;
+            this.nome = nome;
+            this.quantità = quantità;
+        }
     }
     
     
@@ -26,4 +32,11 @@ public class clsOrdine {
         voci = new ArrayList();
     }
     
+    public void addVoce(int idProdotto, String nome, double quantità) {
+        voci.add(new VoceOrdine(idProdotto, nome, quantità)); 
+    }
+    
+    public ArrayList getVoci() {
+        return voci;
+    }
 }
