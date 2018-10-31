@@ -6,7 +6,6 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -14,9 +13,9 @@ import java.util.List;
  */
 public class clsOrdine {
     
-    public List<VoceOrdine> voci;
+    public ArrayList<VoceOrdine> voci;
     
-    public class VoceOrdine {
+    class VoceOrdine {
         int idProdotto;
         String nome;
         double quantità;
@@ -26,24 +25,6 @@ public class clsOrdine {
             this.nome = nome;
             this.quantità = quantità;
         }
-
-        public int getIdProdotto() {
-            return idProdotto;
-        }
-
-        public String getNome() {
-            return nome;
-        }
-
-        public double getQuantità() {
-            return quantità;
-        }
-
-        public void setQuantità(double quantità) {
-            this.quantità = quantità;
-        }
-        
-        
     }
     
     
@@ -55,9 +36,7 @@ public class clsOrdine {
         voci.add(new VoceOrdine(idProdotto, nome, quantità)); 
     }
     
-    public List getVoci() {
+    public ArrayList getVoci() {
         return voci;
     }
-    
-    
 }
