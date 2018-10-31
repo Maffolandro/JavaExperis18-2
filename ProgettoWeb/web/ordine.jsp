@@ -36,7 +36,7 @@
                 <th></th>
                 <th></th>
                 </thead>
-                <%
+                <%  
                     List<beans.clsOrdine.VoceOrdine> l = ordine.getVoci();
                     for (beans.clsOrdine.VoceOrdine v : l) {
                         out.println("<tr>");
@@ -44,8 +44,8 @@
                         String nome = v.getNome();
                         double quantità = v.getQuantità();
                         double prezzo = v.getPrezzo();
-                        String modButton = "<a href='' class='btn btn-info' role='button'> Modifica </a>";
-                        String delButton = "<a href='' class='btn btn-info' role='button'> Rimuovi </a>";
+                        String modButton = "<a href='modificaVoce.jsp?ID=" + ID + "' class='btn btn-info' role='button'> Modifica </a>";
+                        String delButton = "<a href='rimuoviVoce.jsp?ID=" + ID + "' class='btn btn-info' role='button'> Rimuovi </a>";
                         // aggiungiVoce.jsp?ID=" + ID + "
                         out.println("<td>" + nome + "</td>");
                         out.println("<td>" + quantità + "</td>");
