@@ -3,6 +3,11 @@
     Created on : 26-ott-2018, 12.49.18
     Author     : Corso
 --%>
+<!--
+    Contiene la barra di navigazione della parte utente.
+    A seconda dei valori di var1 e var2, viene evidenziala la relativa voce
+-->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <nav class="navbar navbar-default">

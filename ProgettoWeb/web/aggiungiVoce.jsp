@@ -4,6 +4,10 @@
     Author     : Corso
 --%>
 
+<!--
+    Aggiunge una voce al beans contenente l'ordine e torna alla pagina dei prodotti
+-->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,16 +16,19 @@
         <title>Aggiungi voce ordine</title>
     </head>
     <body>
-                <%
-                beans.clsOrdine ordine = (beans.clsOrdine)session.getAttribute("bean");
-                int id = Integer.valueOf(request.getParameter("ID"));
-                String nome = request.getParameter("nome");
-                double quantità = Double.parseDouble(request.getParameter("quantita"));
-                double prezzo = Double.parseDouble(request.getParameter("prezzo"));
-                ordine.addVoce(id, nome, quantità, prezzo);
-                session.setAttribute("bean", ordine);
-                response.sendRedirect("prodotti.jsp");
-                %>
-                        
+        <%
+            // Carica l'ordine e i parametri richiesti
+            beans.clsOrdine ordine = (beans.clsOrdine)session.getAttribute("bean");
+            int id = Integer.valueOf(request.getParameter("ID"));
+            String nome = request.getParameter("nome");
+            double quantità = Double.parseDouble(request.getParameter("quantita"));
+            double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+            // Aggiungi la voce all'ordine
+            ordine.addVoce(id, nome, quantità, prezzo);
+            // Memorizza l'ordine aggiornato
+            session.setAttribute("bean", ordine);
+            // Torna alla pagina prodotti.jsp
+            response.sendRedirect("prodotti.jsp");
+        %>
     </body>
 </html>
