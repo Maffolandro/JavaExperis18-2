@@ -18,7 +18,7 @@
                 String nome = request.getParameter("nome");
                 double quantità = Double.parseDouble(request.getParameter("quantita"));
                 double prezzo = Double.parseDouble(request.getParameter("prezzo"));
-                ordine.addVoce(id, nome, quantità, quantità*prezzo);
+                ordine.addVoce(id, nome, quantità, prezzo);
                 session.setAttribute("bean", ordine);
                 response.sendRedirect("prodotti.jsp");
                 %>

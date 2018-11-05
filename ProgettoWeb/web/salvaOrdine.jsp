@@ -68,7 +68,7 @@
                     conn.close();
                 }
             }
-            session.setAttribute("bean", ordine);
+            session.setAttribute("bean", new beans.clsOrdine());
             response.sendRedirect("prodotti.jsp");
         %>
 

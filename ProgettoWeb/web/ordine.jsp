@@ -23,6 +23,7 @@
         <% var2 = "class='active'"; %>
         <%@include file="Templates/menu.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="funzioni.js"></script>
         <title>Visualizza carrello</title>
     </head>
     <body>
@@ -44,7 +45,7 @@
                         String nome = v.getNome();
                         double quantità = v.getQuantità();
                         double prezzo = v.getPrezzo();
-                        String modButton = "<a href='modificaVoce.jsp?ID=" + ID + "' class='btn btn-info' role='button'> Modifica </a>";
+                        String modButton = "<a class='btn btn-info' role='button' onclick='modificaVoce(" + ID + ", " + quantità + ");'> Modifica </a>";
                         String delButton = "<a href='rimuoviVoce.jsp?ID=" + ID + "' class='btn btn-info' role='button'> Rimuovi </a>";
                         // aggiungiVoce.jsp?ID=" + ID + "
                         out.println("<td>" + nome + "</td>");

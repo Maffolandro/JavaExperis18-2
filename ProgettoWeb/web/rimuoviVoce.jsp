@@ -16,15 +16,13 @@
         <%
             int ID = Integer.parseInt(request.getParameter("ID"));
             beans.clsOrdine ordine = (beans.clsOrdine) session.getAttribute("bean");
-            List<beans.clsOrdine.VoceOrdine> l = ordine.getVoci();
-                beans.clsOrdine.VoceOrdine da_rimuovere = null;
-                for (beans.clsOrdine.VoceOrdine v : l) {
-                    if (ID == v.getIdProdotto()) {
-                        da_rimuovere = v;
-                    }
-                }
-                l.remove(da_rimuovere);
-
+            ordine.removeVoce(ID);
+            session.setAttribute("bean", ordine);
+            String destinazione = "ordine.jsp";
+            if (ordine.voci.size() == 0) {
+                destinazione = "prodotti.jsp";
+            }
+                response.sendRedirect(destinazione);
         %>
     </body>
 </html>

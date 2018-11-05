@@ -46,7 +46,7 @@ public class clsOrdine {
         }
 
         public double getPrezzo() {
-            return prezzo;
+            return prezzo*quantità;
         }
         
         
@@ -59,6 +59,24 @@ public class clsOrdine {
     
     public void addVoce(int idProdotto, String nome, double quantità, double prezzo) {
         voci.add(new VoceOrdine(idProdotto, nome, quantità, prezzo)); 
+    }
+    
+    public void removeVoce(int id) {
+        VoceOrdine da_rimuovere = null;
+        for (VoceOrdine v: voci) {
+            if (v.idProdotto == id) {
+                da_rimuovere = v;
+            }
+        }
+        voci.remove(da_rimuovere);
+    }
+    
+    public void updateVoce(int id, double quantità) {
+        for (VoceOrdine v: voci) {
+            if (v.idProdotto == id) {
+                v.setQuantità(quantità);
+            }
+        }
     }
     
     public List getVoci() {

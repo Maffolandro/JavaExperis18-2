@@ -9,9 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Modifica voce</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            int ID = Integer.parseInt(request.getParameter("ID"));
+            String temp = request.getParameter("quantita");
+            double quantità = Double.parseDouble(temp);
+            beans.clsOrdine ordine = (beans.clsOrdine) session.getAttribute("bean");
+            ordine.updateVoce(ID, quantità);
+            session.setAttribute("bean", ordine);
+            response.sendRedirect("ordine.jsp");
+        %>
     </body>
 </html>
