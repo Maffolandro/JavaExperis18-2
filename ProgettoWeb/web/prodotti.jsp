@@ -1,5 +1,5 @@
 <%-- 
-    Document   : mostraLibri
+    Document   : prodotti
     Created on : 25-ott-2018, 14.57.01
     Author     : Corso
 --%>
@@ -11,18 +11,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%beans.clsOrdine ordine = null;
+        <%
+        // Controlla se è presente un ordine nella sessione
+            beans.clsOrdine ordine = null;
             if (session.getAttribute("bean") == null) {
+                // Se non è presente, creane uno nuovo e memorizzalo
                 ordine = new beans.clsOrdine();
                 session.setAttribute("bean", ordine);
             } else {
+                // Altrimenti, carica il valore della sessione
                 ordine = (beans.clsOrdine) session.getAttribute("bean");
-            }%>
+            }
+        %>
         <%@include file="Templates/headHTML.html" %>
-        <% var1 = "class='active'"; %>
+        <% var1 = "class='active'"; //Imposta la prima voce come attiva%>
         <% if (ordine.getVoci().size() == 0) {
+                // Se non sono presenti voci nell'ordine, nascondi il link per la sezione Ordini
                 var2 = "class='hidden'";
-            }%>
+            }
+        %>
         <%@include file="Templates/menu.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Visualizza prodotti</title>
@@ -49,24 +56,21 @@
                         stmt = conn.createStatement();
                         String query = "SELECT * FROM TB_PRODOTTI";
                         rs = stmt.executeQuery(query);
+                        // Per ogni riga nel database,...
                         while (rs.next()) {
+                            // ...memorizza i dati dalla riga
                             int ID = rs.getInt("ID");
                             String nome = rs.getString("NOME");
                             String descrizione = rs.getString("DESCRIZIONE");
                             Double prezzo = rs.getDouble("PREZZO");
 
-                            
-                            
                             out.println("<tr>");
+                            // Crea un form da usare per aggiungere la voce
                             out.println("<form action='aggiungiVoce.jsp'>");
-                            // Scrive l'ID nella prima riga
-                            // out.println("<td>" + ID + "</td>");
-                            // Genero un pulsante per cancellare // aggiungiProdotto.jsp?ID=" + ID + "
-                            //String addButton = "<a href='aggiungiVoce.jsp?ID=" + ID + "&Nome=" + nome + "&Quantita=" + 1 + "' class='btn btn-info' role='button'> Aggiungi </a>";
-
                             out.println("<td>" + nome + "</td>");
                             out.println("<td>" + descrizione + "</td>");
-                            out.println("<td>" + prezzo + "</td>"); %>
+                            out.println("<td>" + prezzo + "</td>");%>
+                            <!-- Aggiungi i dati necessari come campi nascosti -->
                             <td>
                                 <input name="ID" type="hidden" value="<%=ID%>"></input>
                                 <input name="nome" type="hidden" value="<%=nome%>"></input>
